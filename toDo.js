@@ -22,6 +22,16 @@ function createNewItem(key) {
    listItem.classList.add('listItem')
    listItem.setAttribute('disabled','disabled')
    listItem.value = input.value
+
+   listItem.addEventListener('keydown', (key) => {
+      if(key.key === 'Enter') {
+         let editBtn = listItem.parentElement.childNodes[1].firstChild
+         editBtn.innerText = 'Edit'
+         editBtn.classList.remove('complete')
+         listItem.toggleAttribute('disabled')
+         listItem.classList.toggle('scale')
+      }
+   })
    return listItem
  }
  function createEditBtn() {
